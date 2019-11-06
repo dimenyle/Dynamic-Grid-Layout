@@ -81,7 +81,7 @@ struct ContentView: View {
                                                     }
                                                 }
                                             } else {
-                                                withAnimation(.interactiveSpring()) {
+                                                withAnimation(.interpolatingSpring(mass: 1, stiffness: 35, damping: 35, initialVelocity: 10)) {
                                                     self.notebook.notes[index].xOffset = 0.0
                                                 }
                                             }
@@ -116,7 +116,7 @@ struct ContentView: View {
                                                     }
                                                 }
                                             } else {
-                                                withAnimation(.interactiveSpring()) {
+                                                withAnimation(.interpolatingSpring(mass: 1, stiffness: 35, damping: 35, initialVelocity: 10)) {
                                                     self.notebook.notes[index].xOffset = 0.0
                                                 }
                                             }
@@ -142,7 +142,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct NotePreview: View {
     @State private var flipped = false
-    @State private var opacity = 1.0
+    @State private var textOpacity = 1.0
     
     @ObservedObject var note: Note
     
@@ -151,7 +151,7 @@ struct NotePreview: View {
             Text(note.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(10)
-                .opacity(opacity)
+                .opacity(textOpacity)
         }
         .blur(radius: abs(self.note.xOffset) / 50)
         .padding()
@@ -165,7 +165,7 @@ struct NotePreview: View {
             }
             
             withAnimation(Animation.linear(duration: 0.1).delay(0.20)) {
-                self.opacity = self.opacity == 1.0 ? 0.0 : 1.0
+                self.textOpacity = self.textOpacity == 1.0 ? 0.0 : 1.0
             }
         }
     }
