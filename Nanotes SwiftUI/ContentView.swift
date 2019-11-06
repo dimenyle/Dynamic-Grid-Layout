@@ -51,6 +51,9 @@ struct ContentView: View {
         Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
     ])
     
+    @State private var isLeftColumnActive = false
+    @State private var isRightColumnActive = false
+    
     var body: some View {
         ZStack {
             Color.gray.opacity(0.25).edgesIgnoringSafeArea(.all)
@@ -65,15 +68,16 @@ struct ContentView: View {
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
-                                            guard value.translation.width.isLess(than: 0.0) else { return }
-                                            
+                                            self.isLeftColumnActive = true
+                                            self.isRightColumnActive = false
+
                                             withAnimation(.default) {
                                                 self.notebook.notes[index].xOffset = value.translation.width
                                             }
                                         }
                                         
                                         .onEnded { value in
-                                            if value.translation.width <= -100 {
+                                            if abs(value.translation.width) >= 100 {
                                                 withAnimation(.easeOut(duration: 0.25)) {
                                                     self.notebook.notes[index].xOffset = -300.0
                                                     
@@ -92,6 +96,7 @@ struct ContentView: View {
                         
                         Spacer()
                     }
+                    .zIndex(isRightColumnActive ? 1 : 0)
                     
                         
                     VStack(alignment: .leading, spacing: 8) {
@@ -102,7 +107,8 @@ struct ContentView: View {
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
-                                            guard !value.translation.width.isLess(than: 0.0) else { return }
+                                            self.isRightColumnActive = true
+                                            self.isLeftColumnActive = false
                                             
                                             withAnimation(.default) {
                                                 self.notebook.notes[index].xOffset = value.translation.width
@@ -110,7 +116,7 @@ struct ContentView: View {
                                         }
                                         
                                         .onEnded { value in
-                                            if value.translation.width >= 100 {
+                                            if abs(value.translation.width) >= 100 {
                                                 withAnimation(.easeOut(duration: 0.25)) {
                                                     self.notebook.notes[index].xOffset = 300.0
                                                     
@@ -129,6 +135,7 @@ struct ContentView: View {
                         
                         Spacer()
                     }
+                    .zIndex(isLeftColumnActive ? 1 : 0)
                 }
                 .padding()
                 
@@ -155,8 +162,8 @@ struct NotePreview: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(10)
                 .opacity(textOpacity)
+                .blur(radius: abs(self.note.xOffset) / 50)
         }
-        .blur(radius: abs(self.note.xOffset) / 25)
         .padding()
         .background(Color.white)
         .cornerRadius(5)
