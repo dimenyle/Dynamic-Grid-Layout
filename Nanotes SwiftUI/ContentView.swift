@@ -7,10 +7,33 @@
 //
 
 import SwiftUI
+import Combine
 
-struct Note {
+class Note: ObservableObject, Identifiable {
+    let id = UUID()
     var text: String
-    var xOffset: CGFloat = 0.0
+    @Published var xOffset: CGFloat = 0.0
+    
+    init(text: String) {
+        self.text = text
+    }
+}
+
+class Notebook: ObservableObject {
+    private var cancellables = [AnyCancellable]()
+    
+    @Published var notes = [Note]()
+    
+    init() {}
+    
+    init(notes: [Note]) {
+        self.notes = notes
+        
+        self.notes.forEach({
+            let cancellable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
+            self.cancellables.append(cancellable)
+        })
+    }
 }
 
 public func withDelay(_ seconds: Double, completionHandler: @escaping () -> Void) {
@@ -20,11 +43,13 @@ public func withDelay(_ seconds: Double, completionHandler: @escaping () -> Void
 }
 
 struct ContentView: View {
-    @State var notes = [Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
-                        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"),
-                        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-                        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."),
-                        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")]
+    @ObservedObject var notebook = Notebook(notes: [
+        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
+        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"),
+        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."),
+        Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    ])
     
     var body: some View {
         ZStack {
@@ -33,32 +58,31 @@ struct ContentView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
-                        ForEach((0..<notes.count).filter { !$0.isMultiple(of: 2) }, id: \.self) { index in
-                            NotePreview(text: self.notes[index].text)
-                                .offset(x: self.notes[index].xOffset, y: 0.0)
-                                .blur(radius: -(self.notes[index].xOffset / 50))
+                        ForEach((0..<notebook.notes.count).filter { !$0.isMultiple(of: 2) }, id: \.self) { index in
+                            NotePreview(note: self.notebook.notes[index])
+                                .offset(x: self.notebook.notes[index].xOffset, y: 0.0)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
                                             guard value.translation.width.isLess(than: 0.0) else { return }
                                             
                                             withAnimation(.default) {
-                                                self.notes[index].xOffset = value.translation.width
+                                                self.notebook.notes[index].xOffset = value.translation.width
                                             }
                                         }
                                         
                                         .onEnded { value in
                                             if value.translation.width <= -100 {
                                                 withAnimation(.easeOut(duration: 0.25)) {
-                                                    self.notes[index].xOffset = -300.0
+                                                    self.notebook.notes[index].xOffset = -300.0
                                                     
                                                     withDelay(0.20) {
-                                                        self.notes.remove(at: index)
+                                                        self.notebook.notes.remove(at: index)
                                                     }
                                                 }
                                             } else {
                                                 withAnimation(.interactiveSpring()) {
-                                                    self.notes[index].xOffset = 0.0
+                                                    self.notebook.notes[index].xOffset = 0.0
                                                 }
                                             }
                                         }
@@ -70,32 +94,30 @@ struct ContentView: View {
                     
                         
                     VStack(alignment: .leading, spacing: 8) {
-                        ForEach((0..<notes.count).filter { $0.isMultiple(of: 2) }, id: \.self) { index in
-                            NotePreview(text: self.notes[index].text)
-                                .offset(x: self.notes[index].xOffset, y: 0.0)
-                                .blur(radius: self.notes[index].xOffset / 50)
+                        ForEach((0..<notebook.notes.count).filter { $0.isMultiple(of: 2) }, id: \.self) { index in
+                            NotePreview(note: self.notebook.notes[index])
+                                .offset(x: self.notebook.notes[index].xOffset, y: 0.0)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
                                             guard !value.translation.width.isLess(than: 0.0) else { return }
-                                            
                                             withAnimation(.default) {
-                                                self.notes[index].xOffset = value.translation.width
+                                                self.notebook.notes[index].xOffset = value.translation.width
                                             }
                                         }
                                         
                                         .onEnded { value in
                                             if value.translation.width >= 100 {
                                                 withAnimation(.easeOut(duration: 0.25)) {
-                                                    self.notes[index].xOffset = 300.0
+                                                    self.notebook.notes[index].xOffset = 300.0
                                                     
                                                     withDelay(0.20) {
-                                                        self.notes.remove(at: index)
+                                                        self.notebook.notes.remove(at: index)
                                                     }
                                                 }
                                             } else {
                                                 withAnimation(.interactiveSpring()) {
-                                                    self.notes[index].xOffset = 0.0
+                                                    self.notebook.notes[index].xOffset = 0.0
                                                 }
                                             }
                                         }
@@ -122,15 +144,16 @@ struct NotePreview: View {
     @State private var flipped = false
     @State private var opacity = 1.0
     
-    var text: String
+    @ObservedObject var note: Note
     
     var body: some View {
-        VStack(spacing: 8) {
-            Text(text)
+        return VStack(spacing: 8) {
+            Text(note.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(10)
                 .opacity(opacity)
         }
+        .blur(radius: abs(self.note.xOffset) / 50)
         .padding()
         .background(Color.white)
         .cornerRadius(5)
