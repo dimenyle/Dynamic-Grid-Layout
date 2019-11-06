@@ -60,6 +60,7 @@ struct ContentView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         ForEach((0..<notebook.notes.count).filter { !$0.isMultiple(of: 2) }, id: \.self) { index in
                             NotePreview(note: self.notebook.notes[index])
+                                .opacity(1.0 - Double(abs(self.notebook.notes[index].xOffset) / 100))
                                 .offset(x: self.notebook.notes[index].xOffset, y: 0.0)
                                 .gesture(
                                     DragGesture()
@@ -96,11 +97,13 @@ struct ContentView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         ForEach((0..<notebook.notes.count).filter { $0.isMultiple(of: 2) }, id: \.self) { index in
                             NotePreview(note: self.notebook.notes[index])
+                                .opacity(1.0 - Double(abs(self.notebook.notes[index].xOffset) / 100))
                                 .offset(x: self.notebook.notes[index].xOffset, y: 0.0)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
                                             guard !value.translation.width.isLess(than: 0.0) else { return }
+                                            
                                             withAnimation(.default) {
                                                 self.notebook.notes[index].xOffset = value.translation.width
                                             }
@@ -147,13 +150,13 @@ struct NotePreview: View {
     @ObservedObject var note: Note
     
     var body: some View {
-        return VStack(spacing: 8) {
+        VStack(spacing: 8) {
             Text(note.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(10)
                 .opacity(textOpacity)
         }
-        .blur(radius: abs(self.note.xOffset) / 50)
+        .blur(radius: abs(self.note.xOffset) / 25)
         .padding()
         .background(Color.white)
         .cornerRadius(5)
