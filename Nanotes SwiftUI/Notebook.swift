@@ -27,9 +27,9 @@ class Notebook: ObservableObject {
     init(notes: [Note]) {
         self.notes = notes
         
-        self.notes.forEach({
+        self.notes.forEach {
             let cancellable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
             self.cancellables.append(cancellable)
-        })
+        }
     }
 }

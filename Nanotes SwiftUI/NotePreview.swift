@@ -20,13 +20,14 @@ struct NotePreview: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(10)
                 .opacity(textOpacity)
-                .blur(radius: abs(self.note.xOffset) / 50)
+                .blur(radius: abs(note.xOffset) / 50)
         }
         .padding()
         .background(Color.white)
         .cornerRadius(5)
         .shadow(color: Color.gray.opacity(0.5), radius: 0.5, x: flipped ? -1.5 : 1.5, y: 1.5)
         .rotation3DEffect(.degrees(flipped ? 180.0 : 0.0), axis: (x: 0, y: 1, z: 0))
+//        .rotation3DEffect(.degrees(flipped ? -45.0 : 0.0), axis: (x: 0, y: 1, z: 0))
         .onTapGesture {
             withAnimation(.linear(duration: 0.5)) {
                 self.flipped.toggle()

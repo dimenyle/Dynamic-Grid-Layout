@@ -11,7 +11,8 @@ import Combine
 
 class Note: ObservableObject, Identifiable {
     let id = UUID()
-    var text: String
+    
+    @Published var text: String
     @Published var xOffset: CGFloat = 0.0
     
     init(text: String) {
