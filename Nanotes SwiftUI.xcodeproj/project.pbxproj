@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0354DF23741C40007E18E2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354DE23741C40007E18E2 /* Note.swift */; };
+		AC0354E123741C55007E18E2 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E023741C55007E18E2 /* Notebook.swift */; };
+		AC0354E323741CB1007E18E2 /* NotePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E223741CB1007E18E2 /* NotePreview.swift */; };
+		AC0354E523742501007E18E2 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E423742501007E18E2 /* Column.swift */; };
+		AC0354E7237425B9007E18E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E6237425B9007E18E2 /* Extensions.swift */; };
 		AC7E7D5F2371F95A004FBD01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */; };
 		AC7E7D612371F95A004FBD01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */; };
 		AC7E7D642371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D622371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0354DE23741C40007E18E2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		AC0354E023741C55007E18E2 /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
+		AC0354E223741CB1007E18E2 /* NotePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreview.swift; sourceTree = "<group>"; };
+		AC0354E423742501007E18E2 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
+		AC0354E6237425B9007E18E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AC7E7D5B2371F95A004FBD01 /* Nanotes SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nanotes SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +76,11 @@
 				AC7E7D6F2371F95D004FBD01 /* Info.plist */,
 				AC7E7D622371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld */,
 				AC7E7D692371F95D004FBD01 /* Preview Content */,
+				AC0354DE23741C40007E18E2 /* Note.swift */,
+				AC0354E023741C55007E18E2 /* Notebook.swift */,
+				AC0354E223741CB1007E18E2 /* NotePreview.swift */,
+				AC0354E423742501007E18E2 /* Column.swift */,
+				AC0354E6237425B9007E18E2 /* Extensions.swift */,
 			);
 			path = "Nanotes SwiftUI";
 			sourceTree = "<group>";
@@ -149,9 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0354DF23741C40007E18E2 /* Note.swift in Sources */,
+				AC0354E7237425B9007E18E2 /* Extensions.swift in Sources */,
+				AC0354E323741CB1007E18E2 /* NotePreview.swift in Sources */,
 				AC7E7D5F2371F95A004FBD01 /* AppDelegate.swift in Sources */,
 				AC7E7D612371F95A004FBD01 /* SceneDelegate.swift in Sources */,
+				AC0354E523742501007E18E2 /* Column.swift in Sources */,
 				AC7E7D662371F95A004FBD01 /* ContentView.swift in Sources */,
+				AC0354E123741C55007E18E2 /* Notebook.swift in Sources */,
 				AC7E7D642371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
