@@ -7,35 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC0354DF23741C40007E18E2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354DE23741C40007E18E2 /* Note.swift */; };
 		AC0354E123741C55007E18E2 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E023741C55007E18E2 /* Notebook.swift */; };
-		AC0354E323741CB1007E18E2 /* NotePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E223741CB1007E18E2 /* NotePreview.swift */; };
-		AC0354E523742501007E18E2 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E423742501007E18E2 /* Column.swift */; };
+		AC0354E523742501007E18E2 /* NoteColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E423742501007E18E2 /* NoteColumnView.swift */; };
 		AC0354E7237425B9007E18E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0354E6237425B9007E18E2 /* Extensions.swift */; };
 		AC7E7D5F2371F95A004FBD01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */; };
 		AC7E7D612371F95A004FBD01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */; };
 		AC7E7D642371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D622371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld */; };
-		AC7E7D662371F95A004FBD01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D652371F95A004FBD01 /* ContentView.swift */; };
+		AC7E7D662371F95A004FBD01 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7E7D652371F95A004FBD01 /* NoteListView.swift */; };
 		AC7E7D682371F95D004FBD01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7E7D672371F95D004FBD01 /* Assets.xcassets */; };
 		AC7E7D6B2371F95D004FBD01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7E7D6A2371F95D004FBD01 /* Preview Assets.xcassets */; };
 		AC7E7D6E2371F95D004FBD01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC7E7D6C2371F95D004FBD01 /* LaunchScreen.storyboard */; };
+		ACA8EB6623C5FBAD005CA88F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA8EB6523C5FBAD005CA88F /* Note.swift */; };
+		ACA8EB6823C60828005CA88F /* NoteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA8EB6723C60828005CA88F /* NoteCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC0354DE23741C40007E18E2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AC0354E023741C55007E18E2 /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
-		AC0354E223741CB1007E18E2 /* NotePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreview.swift; sourceTree = "<group>"; };
-		AC0354E423742501007E18E2 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
+		AC0354E423742501007E18E2 /* NoteColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColumnView.swift; sourceTree = "<group>"; };
 		AC0354E6237425B9007E18E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AC7E7D5B2371F95A004FBD01 /* Nanotes SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nanotes SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC7E7D632371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nanotes_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
-		AC7E7D652371F95A004FBD01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AC7E7D652371F95A004FBD01 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		AC7E7D672371F95D004FBD01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC7E7D6A2371F95D004FBD01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC7E7D6D2371F95D004FBD01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC7E7D6F2371F95D004FBD01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACA8EB6523C5FBAD005CA88F /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		ACA8EB6723C60828005CA88F /* NoteCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,16 +70,16 @@
 			children = (
 				AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */,
 				AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */,
-				AC7E7D652371F95A004FBD01 /* ContentView.swift */,
+				AC7E7D652371F95A004FBD01 /* NoteListView.swift */,
 				AC7E7D672371F95D004FBD01 /* Assets.xcassets */,
+				ACA8EB6723C60828005CA88F /* NoteCellView.swift */,
 				AC7E7D6C2371F95D004FBD01 /* LaunchScreen.storyboard */,
 				AC7E7D6F2371F95D004FBD01 /* Info.plist */,
+				ACA8EB6523C5FBAD005CA88F /* Note.swift */,
 				AC7E7D622371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld */,
 				AC7E7D692371F95D004FBD01 /* Preview Content */,
-				AC0354DE23741C40007E18E2 /* Note.swift */,
 				AC0354E023741C55007E18E2 /* Notebook.swift */,
-				AC0354E223741CB1007E18E2 /* NotePreview.swift */,
-				AC0354E423742501007E18E2 /* Column.swift */,
+				AC0354E423742501007E18E2 /* NoteColumnView.swift */,
 				AC0354E6237425B9007E18E2 /* Extensions.swift */,
 			);
 			path = "Nanotes SwiftUI";
@@ -164,14 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC0354DF23741C40007E18E2 /* Note.swift in Sources */,
 				AC0354E7237425B9007E18E2 /* Extensions.swift in Sources */,
-				AC0354E323741CB1007E18E2 /* NotePreview.swift in Sources */,
 				AC7E7D5F2371F95A004FBD01 /* AppDelegate.swift in Sources */,
 				AC7E7D612371F95A004FBD01 /* SceneDelegate.swift in Sources */,
-				AC0354E523742501007E18E2 /* Column.swift in Sources */,
-				AC7E7D662371F95A004FBD01 /* ContentView.swift in Sources */,
+				AC0354E523742501007E18E2 /* NoteColumnView.swift in Sources */,
+				ACA8EB6623C5FBAD005CA88F /* Note.swift in Sources */,
+				AC7E7D662371F95A004FBD01 /* NoteListView.swift in Sources */,
 				AC0354E123741C55007E18E2 /* Notebook.swift in Sources */,
+				ACA8EB6823C60828005CA88F /* NoteCellView.swift in Sources */,
 				AC7E7D642371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

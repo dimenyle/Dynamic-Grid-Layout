@@ -26,8 +26,8 @@ struct NoteListView: View {
             
             ScrollView(.vertical, showsIndicators: true) {
                 return HStack(alignment: .top) {
-                    Column(notes: notebook.oddNumberedNotes)
-                    Column(notes: notebook.evenNumberedNotes)
+                    NoteColumnView(notes: notebook.oddNumberedNotes)
+                    NoteColumnView(notes: notebook.evenNumberedNotes)
                 }
                 .padding()
             }

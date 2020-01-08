@@ -1,5 +1,5 @@
 //
-//  NotePreview.swift
+//  NoteCellView.swift
 //  Nanotes SwiftUI
 //
 //  Created by Levente Dimény on 2019. 11. 07..
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NotePreview: View {
+struct NoteCellView: View {
     @State private var flipped = false
     @State private var textOpacity = 1.0
     
@@ -27,7 +27,6 @@ struct NotePreview: View {
         .cornerRadius(5)
         .shadow(color: Color.gray.opacity(0.5), radius: 0.5, x: flipped ? -1.5 : 1.5, y: 1.5)
         .rotation3DEffect(.degrees(flipped ? 180.0 : 0.0), axis: (x: 0, y: 1, z: 0))
-//        .rotation3DEffect(.degrees(flipped ? -45.0 : 0.0), axis: (x: 0, y: 1, z: 0))
         .onTapGesture {
             withAnimation(.linear(duration: 0.5)) {
                 self.flipped.toggle()

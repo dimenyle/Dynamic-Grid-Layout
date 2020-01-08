@@ -1,5 +1,5 @@
 //
-//  Column.swift
+//  NoteColumnView.swift
 //  Nanotes SwiftUI
 //
 //  Created by Levente Dimény on 2019. 11. 07..
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Column: View {
+struct NoteColumnView: View {
     @State private var dragging = false
     
     @State var notes: [Note]
@@ -16,7 +16,7 @@ struct Column: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(notes, id: \.id) { note in
-                NotePreview(note: note)
+                NoteCellView(note: note)
                     .opacity(1.0 - Double(abs(note.xOffset) / 100))
                     .offset(x: note.xOffset, y: 0.0)
                     .gesture(
@@ -28,7 +28,6 @@ struct Column: View {
                                     note.xOffset = value.translation.width
                                 }
                             }
-                            
                             .onEnded { value in
                                 self.dragging = false
                                 
