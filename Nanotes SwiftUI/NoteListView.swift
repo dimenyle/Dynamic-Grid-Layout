@@ -10,26 +10,22 @@ import SwiftUI
 import Combine
 
 struct NoteListView: View {
-    @ObservedObject var notebook =
-        Notebook(notes: [
-            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
-            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"),
-            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            Note(text: "Lorem ipsum dolor sit amet."),
-            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"),
-            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
-        ])
+    @ObservedObject var notebook = Notebook()
     
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.25).edgesIgnoringSafeArea(.all)
-            
-            ScrollView(.vertical, showsIndicators: true) {
-                return HStack(alignment: .top) {
-                    NoteColumnView(notes: notebook.oddNumberedNotes)
-                    NoteColumnView(notes: notebook.evenNumberedNotes)
+        GeometryReader { geometry in
+            ZStack {
+                Color.gray.opacity(0.25).edgesIgnoringSafeArea(.all)
+                
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack(alignment: .top) {
+                        NoteColumnView(notes: self.notebook.oddNumberedNotes)
+                            .frame(width: (geometry.size.width - 32) / 2)
+                        NoteColumnView(notes: self.notebook.evenNumberedNotes)
+                            .frame(width: (geometry.size.width - 32) / 2)
+                    }
+                    .padding()
                 }
-                .padding()
             }
         }
     }

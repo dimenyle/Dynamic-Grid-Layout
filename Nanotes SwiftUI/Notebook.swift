@@ -22,10 +22,15 @@ class Notebook: ObservableObject {
         notes.enumerated().filter { !$0.offset.isMultiple(of: 2) }.map { $0.element }
     }
     
-    init() {}
-    
-    init(notes: [Note]) {
-        self.notes = notes
+    init() {
+        self.notes = [
+            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
+            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"),
+            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            Note(text: "Lorem ipsum dolor sit amet."),
+            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"),
+            Note(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+        ]
         
         self.notes.forEach {
             let cancellable = $0.objectWillChange.sink(receiveValue: { self.objectWillChange.send() })
