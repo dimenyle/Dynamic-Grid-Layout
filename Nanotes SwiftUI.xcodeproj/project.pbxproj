@@ -70,17 +70,15 @@
 			children = (
 				AC7E7D5E2371F95A004FBD01 /* AppDelegate.swift */,
 				AC7E7D602371F95A004FBD01 /* SceneDelegate.swift */,
-				AC7E7D652371F95A004FBD01 /* NoteListView.swift */,
+				AC0354E6237425B9007E18E2 /* Extensions.swift */,
+				ACA8EC0B23CC7CD2005CA88F /* Views */,
+				ACA8EC0C23CC7CDF005CA88F /* Models */,
+				ACA8EC0D23CC7CEB005CA88F /* Stores */,
 				AC7E7D672371F95D004FBD01 /* Assets.xcassets */,
-				ACA8EB6723C60828005CA88F /* NoteCellView.swift */,
 				AC7E7D6C2371F95D004FBD01 /* LaunchScreen.storyboard */,
 				AC7E7D6F2371F95D004FBD01 /* Info.plist */,
-				ACA8EB6523C5FBAD005CA88F /* Note.swift */,
 				AC7E7D622371F95A004FBD01 /* Nanotes_SwiftUI.xcdatamodeld */,
 				AC7E7D692371F95D004FBD01 /* Preview Content */,
-				AC0354E023741C55007E18E2 /* Notebook.swift */,
-				AC0354E423742501007E18E2 /* NoteColumnView.swift */,
-				AC0354E6237425B9007E18E2 /* Extensions.swift */,
 			);
 			path = "Nanotes SwiftUI";
 			sourceTree = "<group>";
@@ -91,6 +89,32 @@
 				AC7E7D6A2371F95D004FBD01 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACA8EC0B23CC7CD2005CA88F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC7E7D652371F95A004FBD01 /* NoteListView.swift */,
+				ACA8EB6723C60828005CA88F /* NoteCellView.swift */,
+				AC0354E423742501007E18E2 /* NoteColumnView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACA8EC0C23CC7CDF005CA88F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ACA8EB6523C5FBAD005CA88F /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACA8EC0D23CC7CEB005CA88F /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				AC0354E023741C55007E18E2 /* Notebook.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
